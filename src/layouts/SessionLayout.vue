@@ -1,5 +1,5 @@
 <template>
-    <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+    <Disclosure as="nav" class="bg-white shadow-md" v-slot="{ open }">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -14,8 +14,7 @@
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                            alt="Your Company" />
+                        <img class="h-8 w-15 bg-white rounded-md px-5" src="/nStore_logo.png" alt="Your Company" />
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
@@ -25,10 +24,10 @@
                             <Menu v-for="item in navigation" as="div" class="relative inline-block text-left">
                                 <div>
                                     <MenuButton
-                                        class="inline-flex w-full justify-center rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+                                        class="inline-flex w-full justify-center rounded-md bg-white/90 ring-2 ring-orange-primary px-4 py-2 text-sm font-medium text-black hover:bg-orange-primary/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
                                         {{ item.name }}
                                         <ChevronDownIcon v-if="item.subMenu"
-                                            class="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
+                                            class="-mr-1 ml-2 pt-0.5 h-5 w-5 text-gray-400 "
                                             aria-hidden="true" />
                                     </MenuButton>
                                 </div>
@@ -43,7 +42,7 @@
                                         <div class="px-1 py-1">
                                             <MenuItem v-for="childItem in item.subMenu" v-slot="{ active }">
                                             <button v-if="!childItem.subMenu" :class="[
-                                                active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                                                active ? 'hover:bg-orange-primary/90 text-white' : 'text-gray-900',
                                                 'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                                             ]">
                                                 <EditIcon :active="active" class="mr-2 h-5 w-5 text-violet-400"
@@ -53,10 +52,11 @@
                                             <div v-else>
                                                 <Menu as="div" class="relative inline-block text-left w-full">
                                                     <div>
-                                                        <MenuButton class="hover:bg-violet-500 text-gray-900 hover:text-white group flex w-full items-center rounded-md px-6 py-2 text-sm">
+                                                        <MenuButton
+                                                            class="hover:bg-orange-primary/90 text-gray-900 hover:text-white group flex w-full items-center rounded-md px-2 pl-8 py-2 text-sm">
                                                             {{ childItem.name }}
                                                             <ChevronDownIcon
-                                                                class="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
+                                                                class="-mr-1 ml-auto h-5 w-5 text-violet-200 hover:text-violet-100"
                                                                 aria-hidden="true" />
                                                         </MenuButton>
                                                     </div>
@@ -68,16 +68,15 @@
                                                         leave-from-class="transform scale-100 opacity-100"
                                                         leave-to-class="transform scale-95 opacity-0">
                                                         <MenuItems
-                                                            class="absolute right-0 mt-2 origin-top-right divide-y w-full divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+                                                            class="absolute z-20 right-0 mt-2 origin-top-right divide-y w-full divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                                                             <div v-for="kidItem in childItem.subMenu" class="px-1 py-1">
-                                                                <MenuItem 
-                                                                    v-slot="{ active }">
-                                                                        <button :class="[
-                                                                            active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                                                                            'group rounded-md px-2 py-2 text-sm w-full text-start',
-                                                                        ]">
-                                                                            {{ kidItem.name }}
-                                                                        </button>
+                                                                <MenuItem v-slot="{ active }">
+                                                                <button :class="[
+                                                                    active ? 'bg-orange-primary text-white' : 'text-gray-900',
+                                                                    'group rounded-md px-2 py-2 text-sm w-full text-start',
+                                                                ]">
+                                                                    {{ kidItem.name }}
+                                                                </button>
                                                                 </MenuItem>
                                                             </div>
                                                         </MenuItems>
@@ -90,7 +89,7 @@
                                         <div class="px-1 py-1">
                                             <MenuItem v-slot="{ active }">
                                             <button :class="[
-                                                active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                                                active ? 'bg-orange-primary text-white' : 'text-gray-900',
                                                 'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                                             ]">
                                                 <ArchiveIcon :active="active" class="mr-2 h-5 w-5 text-violet-400"
@@ -107,7 +106,7 @@
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <button type="button"
-                        class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        class="relative rounded-full bg-white p-1 text-black hover:text-orange-primary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ">
                         <span class="absolute -inset-1.5" />
                         <span class="sr-only">View notifications</span>
                         <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -171,7 +170,31 @@ import { Bars3Icon, BellIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/
 
 
 const navigation = [
-    { name: 'Operations', to: '/', current: true, },
+    {
+        name: 'User Management', to: '/', current: true, subMenu: [
+            { name: 'User List', to: '/' },
+            { name: 'User Profile', to: '/' },
+        ]
+    },
+    {
+        name: 'Operations', to: '/', current: true, subMenu: [
+            { name: 'Image Resize', to: '/' },
+            { name: 'Menu Digitization', to: '/' },
+            { name: 'Speech To Text', to: '/' },
+            {
+                name: 'Store', to: '/', subMenu: [
+                    { name: 'Update Store', to: '/' },
+                    { name: 'Activate Store', to: '/' },
+                ]
+            },
+            {
+                name: 'Product', to: '/', subMenu: [
+                    { name: 'Update Product', to: '/' },
+                    { name: 'Activate Product', to: '/' },
+                ]
+            },
+        ]
+    },
     { name: 'Backend', to: '/', current: false, },
     { name: 'Kyc', to: '/', current: false, },
     {
